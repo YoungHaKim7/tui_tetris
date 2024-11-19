@@ -3,8 +3,13 @@ use rand::{rngs::OsRng, RngCore};
 use crate::frame::{O, X, Y};
 
 pub enum BlockType {
+    Line,
+    Square,
     LeftS,
     RightS,
+    LeftL,
+    RightL,
+    T,
 }
 
 pub struct Block {
@@ -27,12 +32,28 @@ impl Block {
 
 pub fn build_block(block_type: BlockType) -> Block {
     match block_type {
+        // '━━━━'
+        BlockType::Line => Block::new(vec![
+            vec![vec![X, Y, X, Y, X, Y, X, Y]],
+            vec![vec![X, Y], vec![X, Y], vec![X, Y], vec![X, Y]],
+            vec![vec![X, Y, X, Y, X, Y, X, Y]],
+            vec![vec![X, Y], vec![X, Y], vec![X, Y], vec![X, Y]],
+        ]),
+        // ' ▇ '
+        BlockType::Square => Block::new(vec![
+            vec![vec![X, Y, X, Y], vec![X, Y, X, Y]],
+            vec![vec![X, Y, X, Y], vec![X, Y, X, Y]],
+            vec![vec![X, Y, X, Y], vec![X, Y, X, Y]],
+            vec![vec![X, Y, X, Y], vec![X, Y, X, Y]],
+        ]),
+        // ' ▞ '
         BlockType::RightS => Block::new(vec![
             vec![vec![O, O, X, Y, X, Y], vec![X, Y, X, Y, O, O]],
             vec![vec![X, Y, O, O], vec![X, Y, X, Y], vec![O, O, X, Y]],
             vec![vec![O, O, X, Y, X, Y], vec![X, Y, X, Y, O, O]],
             vec![vec![X, Y, O, O], vec![X, Y, X, Y], vec![O, O, X, Y]],
         ]),
+        // ' ▚  '
         BlockType::LeftS => Block::new(vec![
             // X '[', Y ']',  O' ',
             // [ ] [ ]   ,     [ ] [ ]
@@ -41,6 +62,27 @@ pub fn build_block(block_type: BlockType) -> Block {
             vec![vec![O, O, X, Y], vec![X, Y, X, Y], vec![X, Y, O, O]],
             vec![vec![X, Y, X, Y, O, O], vec![O, O, X, Y, X, Y]],
             vec![vec![O, O, X, Y], vec![X, Y, X, Y], vec![X, Y, O, O]],
+        ]),
+        // '▙ '
+        BlockType::LeftL => Block::new(vec![
+            vec![vec![X, Y, O, O, O, O], vec![X, Y, X, Y, X, Y]],
+            vec![vec![X, Y, X, Y], vec![X, Y, O, O], vec![X, Y, O, O]],
+            vec![vec![X, Y, X, Y, X, Y], vec![O, O, O, O, X, Y]],
+            vec![vec![O, O, X, Y], vec![O, O, X, Y], vec![X, Y, X, Y]],
+        ]),
+        // ' ▟ '
+        BlockType::RightL => Block::new(vec![
+            vec![vec![O, O, O, O, X, Y], vec![X, Y, X, Y, X, Y]],
+            vec![vec![X, Y, O, O], vec![X, Y, O, O], vec![X, Y, X, Y]],
+            vec![vec![X, Y, X, Y, X, Y], vec![X, Y, O, O, O, O]],
+            vec![vec![X, Y, X, Y], vec![O, O, X, Y], vec![O, O, X, Y]],
+        ]),
+        // ' ㅗ ㅏ ㅜ ㅓ '
+        BlockType::T => Block::new(vec![
+            vec![vec![O, O, X, Y, O, O], vec![X, Y, X, Y, X, Y]],
+            vec![vec![X, Y, O, O], vec![X, Y, X, Y], vec![X, Y, O, O]],
+            vec![vec![X, Y, X, Y, X, Y], vec![O, O, X, Y, O, O]],
+            vec![vec![O, O, X, Y], vec![X, Y, X, Y], vec![O, O, X, Y]],
         ]),
     }
 }
