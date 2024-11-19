@@ -18,13 +18,16 @@ BlockType::T => Block::new(vec![
 //             vec![vec![O, O, X, Y, O, O],
             //      vec![X, Y, X, Y, X, Y]],
 
+//         'ㅏ' 모양 
 //             vec![vec![X, Y, O, O],
                 //  vec![X, Y, X, Y],
                 //  vec![X, Y, O, O]],
 
+//         'ㅜ' 모양 
 //             vec![vec![X, Y, X, Y, X, Y],
 //                  vec![O, O, X, Y, O, O]],
 
+//         'ㅓ' 모양 
 //             vec![vec![O, O, X, Y],
 //                  vec![X, Y, X, Y],
 //                  vec![O, O, X, Y]],
