@@ -5,6 +5,12 @@
 
 # `BlockType::T`
 ```rs
+pub const X: char = '[';
+pub const Y: char = ']';
+pub const O: char = ' ';
+pub const PIXEL_SIZE: usize = 2;
+
+
 BlockType::T => Block::new(vec![
     vec![vec![O, O, X, Y, O, O], vec![X, Y, X, Y, X, Y]],
     vec![vec![X, Y, O, O], vec![X, Y, X, Y], vec![X, Y, O, O]],
